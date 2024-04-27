@@ -35,8 +35,11 @@ function Planner(){
         <>
             Cosmetic <br/>
             { "ST: " + (basestats.ST + character.ST)}
+            <br/><br/>
+            {backgrounds[3].description}
             <br/>
-            {"" + [backgrounds]}
+            <br/>
+            {backgrounds[4].description}
         </>
     )
 }
