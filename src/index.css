@@ -1,0 +1,11 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+body{
+    color: white;
+    background-color: rgb(25,25,25);
+    min-height: 100%;
+}
