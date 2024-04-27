@@ -193,6 +193,126 @@ const backgrounds = [
         modifiers: {IN: -1, PickPocket: 2}
     },
     {
+        name: "Hydrophobic",
+        races: ["human", "dwarf", "gnome", "halfling", "halforc"],
+        description: "You are deathly afraid of water and of drowning. As a child, you constantly made up reasons to avoid entering even shallow water, gaining a bonus to Persuasion. If you do find yourself in water, you suffer a panic attack, leading to penalties in Dexterity (-2), Intelligence (-2) and Willpower (-2), but you do gain a bonus to Strength (+2) from the fear.",
+        modifiers: {Persuasion: 2}
+    },
+    {
+        name: "Hyperactive",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You are constantly busy. Your Speed is higher than normal (+1), but most people find you annoying, and your Charisma suffers (-1).",
+        modifiers: {Speed: 1, CH: -1}
+    },
+    {
+        name: "Idiot Savant",
+        races: ["human", "halfelf", "halforc", "halfogre"],
+        description: "You were institutionalized at a young age and believed to be mentally handicapped. After several years, the institute lost funding and you were turned out onto the street with nothing more than the clothes on your back. You are brilliant with a keen grasp of numbers and mathematics, but you are barely able to talk. You gain a significant bonus to Intelligence (+6) and an exceptional bonus to your Gambling skill. However, years of being locked away makes you suffer physically and emotionally. You act as if you had a much lower Intelligence (Dumb Dialogue and Technical Manuals penalty), and you suffer penalties to Strength (-1), Constitution (-1), Dexterity (-2), and Willpower (-2).",
+        modifiers: {IN: 6, ST: -1, CN: -1, DX: -2, WP: -2, Gambling: 3}
+    },
+    {
+        name: "Inheritance",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You were orphaned as a young child and inherited a lot of money. The easy life has cost you a penalty to Willpower (-1). Most of the money has been spent by now, but you begin with twice the normal starting wealth.",
+        modifiers: {WP: -1}
+    },
+    {
+        name: "Lady's Man",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Women swoon whenever they are near you. Being unusually good-looking, you gain a large bonus to Beauty (+6). Unfortunately, all that primping and powdering has you lacking in the more manly virtues... you lose points in Constitution (-2), Strength (-2), and Dexterity (-2).",
+        modifiers: {BE: 6, CN: -2, ST: -2, DX: -2}
+    },
+    {
+        name: "Mad Doctor",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You have performed numerous untested and dangerous medical experiments upon yourself and suffer from the adverse effects. You have bonuses to Intelligence (+2), Perception (+2), Poison Resistances (+20%), Electrical Resistance (+20%), and a bonus to your Healing skill (+1), but you suffer penalties to Beauty (-1), Charisma (-1), Dexterity (-2), and Constitution (-3).",
+        modifiers: {IN: 2, PE: 2, PRes: 20, ERes: 20, BE: -1, CH: -1, DX: -2, CN: -3, Heal: 4}
+    },
+    {
+        name: "Magick Allergy",
+        races: ["human", "dwarf", "gnome", "halfling", "halforc", "halfogre"],
+        description: "You are severely allergic to magickal items, such that touching them causes you pain. Therefore, you have been devoted to technology since a young age and have developed a knack for it. You gain a +10% bonus to Technological Aptitude, but you cannot wield ANY magickal items.",
+        modifiers: {TechApt: 10}
+    },
+    {
+        name: "Miracle Operation",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Though born to a wealthy family as a young child, you mysteriously lost your sight. It was discovered that you had contracted a degenerative and always fatal disease. As a blind child, your early development favored indoor activities and development befitting the wealthiest of society. You gained bonuses to Intelligence (+3) and Charisma (+3). Your senses of touch, hearing, and smell increased to compensate for your blindness, resulting in a bonus to Perception (+5). However, you suffered physically, leading to penalties in Strength (-3), Dexterity (-3), and Constitution (-5). As a young adult, your parents, out of desperation, paid for the services of a renowned, if unorthodox physician, who miraculously restored your sight. The operation cost your family its fortune, so you set out to make your own.",
+        modifiers: {IN: 3, CH: 3, PE: 5, ST: -3, DX: -3, CN: -5}
+    },
+    {
+        name: "Nature Mage",
+        races: ["human", "elf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You were born with a magickal aptitude that has affinity for nature. While standing on a natural surface, you possess a 20% bonus to Magickal Aptitude. But on a man-made surface, you suffer a 20% penalty to your Magickal Aptitude.",
+        modifiers: {}
+    },
+    {
+        name: "Nietzsche Poster Child",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Nietzsche Poster Child",
+        modifiers: {}
+    },
+    {
+        name: "Night Mage",
+        races: ["human", "elf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You were born with a magickal aptitude that has affinity for the night. At night (between the hours of 6 PM and 6 AM), you possess a 20% bonus to your Magickal Aptitude, but during the day you suffer a 20% penalty to your Magickal Aptitude.",
+        modifiers: {}
+    },
+    {
+        name: "Only Child",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You grew up as the only child of very permissive parents, and you basically always got your own way. As an adult, you expect nothing less than total obedience of those around you, gaining a bonus to Willpower (+6), but your temperament leaves much to be desired, resulting in penalties to your Charisma (-4) and your Persuasion and Haggle skills.",
+        modifiers: {WP: 6, CH: -4, Haggle: -2, Persuasion: -2}
+    },
+    {
+        name: "Professional Knife Tosser",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You used to work as a knife thrower in a circus, until losing an eye in a freak accident. Sadly, you lose a point to Perception (-1), but you gain an exceptional bonus to your Throwing skill.",
+        modifiers: {PE: -1, Throwing: 3}
+    },
+    {
+        name: "Raised by Elves",
+        races: ["human"],
+        description: "You start with a wonderful suit of magickal elven chain mail, but suffer a slight penalty to all Tech skills.",
+        modifiers: {Repair: -1, Firearms: -1, PickLocks: -1, DisarmTraps: -1}
+    },
+    {
+        name: "Raised by Monks",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Piety has its advantages and disadvantages. You gain a bonus to Perception (+1), but renouncing the material world leaves you with only one quarter of the normal starting wealth.",
+        modifiers: {PE: 1}
+    },
+    {
+        name: "Raised by Orcs",
+        races: ["human", "gnome", "halfling", "halforc", "halfogre"],
+        description: "You were a runaway orphan, homeless and starving, when an orcish family in the wilderness took you in and raised you. Their brutish ways have left you with increased Strength (+2) and Perception (+2), as well as given you a slight bonus to all Combat Skills. Unfortunately, your upbringing has also taken its toll on your personality, and you have a severe penalty to Charisma (-6).",
+        modifiers: {CH: -6, ST: 2, PE: 2, Melee: 1, Dodge: 1, Bow: 1, Throwing: 1}
+    },
+    {
+        name: "Raised by Snake Handlers",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You receive a 20% increase in your Resistances to poison, but suffer a penalty to your Beauty (-1) due to the large numbers of bite scars on your arms and legs.",
+        modifiers: {PRes: 20, BE: -1}
+    },
+    {
+        name: "",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "",
+        modifiers: {}
+    },
+    {
+        name: "",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "",
+        modifiers: {}
+    },
+    {
+        name: "",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "",
+        modifiers: {}
+    },
+    {
         name: "",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "",
