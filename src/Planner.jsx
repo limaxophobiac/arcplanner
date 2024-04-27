@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import backgrounds from './backgrounds.js'
+import races from './races.js'
 import './Planner.css'
-
 
 const basestats = {ST: 8, CN: 8, DX: 8, BT: 8, IN: 8, WP: 8, PE: 8, CH: 8};
 
-const races = {
-
-};
 
 function characterFactory(){
     return {
@@ -15,6 +12,7 @@ function characterFactory(){
         race: "Human",
         background: "none",
         level: 1,
+        unspent: 5,
         ST: 0, 
         CN: 0,
         DX: 0,
@@ -35,6 +33,8 @@ function Planner(){
         <>
             Cosmetic <br/>
             { "ST: " + (basestats.ST + character.ST)}
+            <br/>
+            {races.halfogre.ST}
             <br/><br/>
             {backgrounds[3].description}
             <br/>
