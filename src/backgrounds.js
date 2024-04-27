@@ -117,12 +117,6 @@ const backgrounds = [
     {
         name: "Débutante",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
-        modifiers: {}
-    },
-    {
-        name: "",
-        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "Your family is one of the most influential in all of Arcanum. As a young debutante, you have bonuses to Beauty (+3) and Charisma (+3). Of course, the easy life has made you soft in mind and body. You have penalties in Strength (-1), Dexterity (-1), and all of your Combat Skills.",
         modifiers: {BE: 3, CH: 3, ST: -1, DX: -1, Melee: -2, Dodge: -2, Bow: -2, Throwing: -2}
     },
@@ -295,35 +289,101 @@ const backgrounds = [
         modifiers: {PRes: 20, BE: -1}
     },
     {
-        name: "",
+        name: "Raised in the Pits",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
+        description: "Being a veteran in the local pit fights, you gain a bonus to Strength (+2), Dexterity (+2), and a bonus to all Combat Skills. The vicious combat has also taken a toll. Head trauma gives you a severe penalty to Intelligence (-6). As a result, you're not especially good with money. Your entire life savings amounts to a measly 100 coins and your battle pit weapon.",
+        modifiers: {IN: -6, ST: 2, DX: 2, Melee: 1, Dodge: 1, Bow: 1, Throwing: 1}
+    },
+    {
+        name: "Ran Away with the Circus",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Having run away with a local troupe of circus performers, you have gained considerable physical Strength (+6), but have serious deficiencies in Intelligence (-2), Willpower (-3), and Perception (-1) due to all of the schooling that you missed.",
+        modifiers: {ST: 6, IN: -2, WP: -3, PE: -1}
+    },
+    {
+        name: "Rare Half-Ogre Birth",
+        races: ["halfogre"],
+        description: "You were born to a human mother, who miraculously survived your birth. Having been raised in the city, you gain a considerable bonus to Intelligence (+2). City life has also lessened your ferocity, and you lose points in both Strength (-1) and Constitution (-1).",
+        modifiers: {IN: 2, ST: -1, CN: -1}
+    },
+    {
+        name: "Sent to Charm School",
+        races: ["human"],
+        description: "Instead of a general education, you were sent to charm school. You gain bonuses to both Beauty (+1) and Charisma (+2), but you lose points in both Intelligence (-1) and Strength (-2).",
+        modifiers: {BE: 1, CH: 2, IN: -1, ST: -2}
+    },
+    {
+        name: "Sheltered Childhood",
+        races: ["human", "elf", "gnome", "halfling", "halfelf", "halforc"],
+        description: "You were cooed and coddled incessantly as a child. As a result of overprotective parenting, you take a severe penalty to Strength (-6), but, being more sensitive, you have bonuses to Intelligence (+2), Willpower (+2), and Perception (+1).",
+        modifiers: {ST: -6, IN: 2, WP: 2, PE: 1}
+    },
+    {
+        name: "Sickly",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "Mother Nature can be a harsh mistress. Having been born with an extremely weak immune system, you have penalties to Strength (-2), Constitution (-4), and Dexterity (-1). But all is not lost. Afternoons spent with a fever and a good book have afforded you unnaturally high Intelligence (+6).",
+        modifiers: {IN: 6, ST: -2, CN: -4, DX: -1}
+    },
+    {
+        name: "Sky Mage",
+        races: ["human", "elf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "You were born with a magickal aptitude that has affinity for the open sky. While outside and in clear view of the sky, you possess a 20% bonus to Magickla Aptitude. But while underground, indoors, or even under a heavy forest canopy, you suffer a 20% penalty to your Magickal Aptitude.",
         modifiers: {}
     },
     {
-        name: "",
+        name: "Sold Your Soul",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
-        modifiers: {}
+        description: "You have made a pact with a demon. In exchange for more magickal power, you have dedicated your life to the pursuit of evil. You gain 20% to Magickal Aptitude, but suffer -20 reaction from others and a -20 alignment (and your alignment can NEVER go higher).",
+        modifiers: {MagickApt: 20, Reaction: -20, Alignment: -20}
     },
     {
-        name: "",
+        name: "Special Person",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
-        modifiers: {}
+        description: "You have suffered congenital brain damage. You lack Intelligence (-2), but you receive more praise when you do good deeds (resulting in a better reaction from people).",
+        modifiers: {IN: -2}
     },
     {
-        name: "",
+        name: "Super Model",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
-        modifiers: {}
+        description: "You are a stunningly gorgeous woman, and you have been pampered and coddled all of your life. You gain a tremendous bonus to Beauty (+6) at the cost of Strength (-2) and Intelligence (-4).",
+        modifiers: {BE: 6, ST: -2, IN: -4}
     },
     {
-        name: "",
-        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
-        description: "",
-        modifiers: {}
+        name: "Suppressed Orcish Looks",
+        races: ["halforc"],
+        description: "You do not really look very orcish, but you are exceptionally surly. You have a bonus to Beauty (+2), but suffer a penalty to your Charisma (-2).",
+        modifiers: {BE: 2, CH: -2}
     },
+    {
+        name: "Technophobia",
+        races: ["human", "halfling", "halfelf", "halforc"],
+        description: "You were raised on a potato farm in the rustic backwaters of a distant land. You worked hard, gaining a bonus to Strength (+1) and Constitution (+1), but you never experienced any technology of any kind. Subsequently, you are afraid of technological items and cannot bring yourself to even pick one up.",
+        modifiers: {ST: 1, CN: 1}
+    },
+    {
+        name: "Tomboy",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "As a little girl, you were always playing games with the boys. As a woman, you can hold your own against any man, and you have avoided the stereotypical female role in society. This background negates the gender effect by increasing Strength (+1) while decreasing Constitution (-1).",
+        modifiers: {ST: 1, CN: -1}
+    },
+    {
+        name: "Tough Hide",
+        races: ["halforc", "halfogre"],
+        description: "You were born with thick, brutish skin. Although you resist damage more than the average bloke does (10%), you unfortunately take a penalty to Beauty (-1).",
+        modifiers: {ResistDamage: 10, BE: -1}
+    },
+    {
+        name: "Troll Offspring",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "The gods frowned upon you when you were born. Cursed with both trollish looks and mannerisms, you receive severe penalties to Beauty (-4) and Charisma (-4). As everyone seems to think that you are spawned from monsters or worse, you often find yourself fending off hunters and holy men, and gain bonuses to Strength (+2), Constitution (+2), and Dexterity (+1).",
+        modifiers: {BE: -4, CH: -4, ST: 2, CN: 2, DX: 1}
+    },
+    {
+        name: "Wild Half-Ogre",
+        races: ["halfogre"],
+        description: "You were born to an ogre mother and lived with an ogre clan until very recently. Compared to your more civilized brethren, you gain a bonus to Willpower (+1), but you suffer a penalty to your Charisma (-1).",
+        modifiers: {WP: 1, CH: -1}
+    }
 ];
 
 export default backgrounds;

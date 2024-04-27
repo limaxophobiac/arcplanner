@@ -40,6 +40,8 @@ function Planner(){
             <br/>
             <br/>
             {backgrounds[4].description}
+            <br/>
+            {backgrounds[20].description}
         </>
     )
 }
