@@ -64,7 +64,6 @@ function characterFactory(){
         Mechanical: 0,
         Smithy: 0,
         Therapeutics: 0
-        
     };
 }
 
