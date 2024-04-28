@@ -1,5 +1,11 @@
 const backgrounds = [
     {
+        name: "None",
+        races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
+        description: "",
+        modifiers: {}
+    },
+    {
         name: "Afraid of the Dark",
         races: ["human", "halfling"],
         description: "You cannot stand to be in the dark. You stay constantly aware of your surroundings, peering into dim corners and dark shadows to see if something is there. While this has raised your Perception (+2), you will suffer a panic attack if you are in too dark an area, leading to penalties in Dexterity (-2), Intelligence (-2), and Willpower (-2), but you do gain a bonus to Strength (+2) from the fear.",

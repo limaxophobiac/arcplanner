@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import backgrounds from './backgrounds.js'
 import races from './races.js'
+import blessings from './blessings.js'
 import './Planner.css'
 
 const basestats = {ST: 8, CN: 8, DX: 8, BT: 8, IN: 8, WP: 8, PE: 8, CH: 8};
@@ -9,8 +10,8 @@ const basestats = {ST: 8, CN: 8, DX: 8, BT: 8, IN: 8, WP: 8, PE: 8, CH: 8};
 function characterFactory(){
     return {
         male: true,
-        race: "Human",
-        background: "none",
+        race: "human",
+        background: 0,
         level: 1,
         unspent: 5,
         ST: 0, 
@@ -22,8 +23,7 @@ function characterFactory(){
         PE: 0,
         CH: 0,
         Hp: 0,
-        Fp: 0,
-        blessings: {}
+        Fp: 0
     };
 }
 
