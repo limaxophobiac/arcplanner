@@ -1,8 +1,10 @@
+import './passivedisplay.css'
+
 function Passivedisplay({name, value}){
     return (
-        <div>
-            {name + ": "}
-            {value}
+        <div className="passiveDisplay">
+            <div className='nameDiv'>{name}</div>
+            <div className='valueDiv'>{value}</div>
         </div>
     )
 }

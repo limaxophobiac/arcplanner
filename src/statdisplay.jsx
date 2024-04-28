@@ -6,7 +6,7 @@ function Statdisplay({adder, name, value, assigned, max = 20, hasPoints= true}){
         <div className="statDisplay">
             <button onClick={() => adder(-1)} disabled={assigned <= 0}>{"<"}</button>
             <div className='nameDiv'>{name}</div>
-            <div className='valueDiv'>{value}</div>
+            <div className='valueDiv'style={value > max ? {color: 'red'} : {}}>{value}</div>
             <button onClick={() => adder(1)} disabled={value >= max || !hasPoints}>{">"}</button>
             
         </div>
