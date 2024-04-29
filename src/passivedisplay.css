@@ -5,17 +5,19 @@
     margin: 0.1rem;
 }
 
-.valueDiv {
+.passiveDisplay .valueDiv {
     background-color: gray;
-    min-width: 2rem;
+    min-width: 3rem;
     text-align: center;
     color: black;
     border-radius: 0.5rem;
     padding: 0.1rem;
-    margin-right: 0.2rem;
     margin-left: 0.5rem;
 }
 
-.nameDiv{
+.passiveDisplay .nameDiv{
+    margin-left: 0.2rem;
     padding: 0.1rem;
+    min-width: 3rem;
+    flex-grow: 1;
 }

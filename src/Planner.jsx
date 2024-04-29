@@ -3,6 +3,7 @@ import backgrounds from './backgrounds.js'
 import races from './races.js'
 //import blessings from './blessings.js'
 import Statdisplay from './statdisplay.jsx'
+import Passivedisplay from './passivedisplay.jsx'
 import './Planner.css'
 
 export default Planner;
@@ -37,6 +38,12 @@ function Planner(){
         if (igMins) return 7;
         let i = calcPrimary("IN");
         return i >= 19 ? 7 : i >= 17 ? 6 : i >= 15 ? 5 : i >= 13 ? 4 : i >= 11 ? 3 : i >= 8 ? 2 : i >= 5 ? 1 : 0; 
+    }
+
+    function calcAffinity(){
+        let magickApt = (races[character.race].MagickApt || 0) + (backgrounds[character.background].modifiers.MagickApt || 0) + magics.reduce((acc, elem) => acc + character[elem]*5, 0);
+        let techApt = (races[character.race].TechApt || 0) + (backgrounds[character.background].modifiers.TechApt || 0) + disciplines.reduce((acc, elem) => acc + character[elem]*7, 0);
+        return magickApt - techApt - character.Repair*5 - character.Firearms*5 -character.PickLocks*5 -character.DisarmTraps*5;
     }
 
     const magics = [
@@ -119,6 +126,8 @@ function Planner(){
                 <h2>Derived Statistics</h2>
                 <Statdisplay name="HP" value={character.level*3 + calcPrimary("ST")*2 + calcPrimary("WP") + character.Hp*4} assigned={character.Hp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Hp", val)} max = {10000}/>
                 <Statdisplay name="FP" value={character.level*3 + calcPrimary("CN")*2 + calcPrimary("WP") + character.Fp*4} assigned={character.Fp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Fp", val)} max = {10000}/>
+                <Passivedisplay name = {"Magick Affinity"} value = {Math.max(calcAffinity(), 0)}/>
+                <Passivedisplay name = {"Tech Affinity"} value = {Math.max(-calcAffinity(), 0)}/>
             </div>
         </div>
     )
