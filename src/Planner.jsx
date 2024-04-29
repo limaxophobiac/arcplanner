@@ -16,7 +16,7 @@ function Planner(){
     }
     function calcPrimary(name){
         const base = 8 + (name == "ST" && !character.male ? -1 : 0) + (name == "CN" && !character.male ? 1 : 0);
-        return base + character[name] + (backgrounds[character.background].modifiers[name] || 0) + (races[character.race][name] || 0);
+        return Math.max(base + character[name] + (backgrounds[character.background].modifiers[name] || 0) + (races[character.race][name] || 0), 1);
     }
     function calcSkill(name){
         return (races[character.race][name] || 0) + (backgrounds[character.background].modifiers[name] || 0) + (character[name]*4);
@@ -102,6 +102,8 @@ function Planner(){
             </div>
             <div id="derived">
                 <h2>Derived Statistics</h2>
+                <Statdisplay name="HP" value={character.level*3 + calcPrimary("ST")*2 + calcPrimary("WP") + character.Hp*4} assigned={character.Hp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Hp", val)} max = {10000}/>
+                <Statdisplay name="FP" value={character.level*3 + calcPrimary("CN")*2 + calcPrimary("WP") + character.Fp*4} assigned={character.Fp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Fp", val)} max = {10000}/>
             </div>
         </div>
     )
