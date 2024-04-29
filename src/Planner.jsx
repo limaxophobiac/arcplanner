@@ -21,7 +21,24 @@ function Planner(){
     function calcSkill(name){
         return (races[character.race][name] || 0) + (backgrounds[character.background].modifiers[name] || 0) + (character[name]*4);
     }
-    
+
+    const magics = [
+        "Air",
+        "Earth",
+        "Fire",
+        "Water",
+        "Force",
+        "Mental",
+        "Meta",
+        "Morph",
+        "Nature",
+        "NecroBlack",
+        "NecroWhite",
+        "Phantasm",
+        "Summoning",
+        "Temporal",
+    ]
+
     return (
         <div id ="planner">
             <div id="primary">
@@ -57,8 +74,10 @@ function Planner(){
                 <Statdisplay name="PickLocks" value={calcSkill("PickLocks")} assigned={character.PickLocks} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickLocks", val)}/>
                 <Statdisplay name="Disarm Traps" value={calcSkill("DisarmTraps")} assigned={character.DisarmTraps} hasPoints={character.unspent > 0} adder = {(val) => addStat("DisarmTraps", val)}/>
             </div>
+            
             <div id="Magic">
                 <h2>Magic</h2>
+                {magics.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {Math.min(5, Math.floor(calcPrimary("WP")/3) -1)}/>)}
             </div>
             <div id="Disciplines">
                 <h2>Disciplines</h2>
@@ -69,12 +88,28 @@ function Planner(){
         </div>
     )
 }
+/*
 
+Air: 0,
+        Earth: 0,
+        Fire: 0,
+        Water: 0,
+        Force: 0,
+        Mental: 0,
+        Meta: 0,
+        Morph: 0,
+        Nature: 0,
+        NecroBlack: 0,
+        NecroWhite: 0,
+        Phantasm: 0,
+        Summoning: 0,
+        Temporal: 0,
+*/
 
 function characterFactory(){
     return {
         male: true,
-        race: "halfling",
+        race: "gnome",
         background: 9,
         level: 1,
         unspent: 30,
