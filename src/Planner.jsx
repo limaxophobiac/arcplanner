@@ -84,6 +84,7 @@ function Planner(){
             </div>
             <div id="Skills">
                 <h2>Skills</h2>
+                
                 <Statdisplay name="Bow" value={calcSkill("Bow")} assigned={character.Bow} hasPoints={character.unspent > 0} adder = {(val) => addStat("Bow", val)} max = {calcMaxSkill("DX", "Bow")}/>
                 <Statdisplay name="Dodge" value={calcSkill("Dodge")} assigned={character.Dodge} hasPoints={character.unspent > 0} adder = {(val) => addStat("Dodge", val)} max = {calcMaxSkill("DX", "Dodge")}/>
                 <Statdisplay name="Melee" value={calcSkill("Melee")} assigned={character.Melee} hasPoints={character.unspent > 0} adder = {(val) => addStat("Melee", val)} max = {calcMaxSkill("DX", "Melee")}/>
@@ -103,6 +104,7 @@ function Planner(){
                 <Statdisplay name="Firearms" value={calcSkill("Firearms")} assigned={character.Firearms} hasPoints={character.unspent > 0} adder = {(val) => addStat("Firearms", val)} max = {calcMaxSkill("PE", "Firearms")}/>
                 <Statdisplay name="PickLocks" value={calcSkill("PickLocks")} assigned={character.PickLocks} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickLocks", val)} max = {calcMaxSkill("DX", "PickLocks")}/>
                 <Statdisplay name="Disarm Traps" value={calcSkill("DisarmTraps")} assigned={character.DisarmTraps} hasPoints={character.unspent > 0} adder = {(val) => addStat("DisarmTraps", val)} max = {calcMaxSkill("PE", "DisarmTraps")}/>
+                <h5>Note: Skills over 20 and below 0 act as 20 or 0</h5>
             </div>
             
             <div id="Magic">
