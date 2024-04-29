@@ -21,8 +21,14 @@ function Planner(){
     function calcSkill(name){
         return (races[character.race][name] || 0) + (backgrounds[character.background].modifiers[name] || 0) + (character[name]*4);
     }
+    function calcDiscpMax(){
+        let i = calcPrimary("IN");
+        return i >= 19 ? 7 : i >= 17 ? 6 : i >= 15 ? 5 : i >= 13 ? 4 : i >= 11 ? 3 : i >= 8 ? 2 : i >= 5 ? 1 : 0; 
+    }
 
     const magics = [
+        "Conveyance",
+        "Divination",
         "Air",
         "Earth",
         "Fire",
@@ -37,6 +43,17 @@ function Planner(){
         "Phantasm",
         "Summoning",
         "Temporal",
+    ]
+
+    const disciplines = [
+        "Chemistry",
+        "Electrical",
+        "Explosives",
+        "GunSmithing",
+        "Herbology",
+        "Mechanical",
+        "Smithy",
+        "Therapeutics"
     ]
 
     return (
@@ -81,6 +98,7 @@ function Planner(){
             </div>
             <div id="Disciplines">
                 <h2>Disciplines</h2>
+                {disciplines.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {calcDiscpMax()}/>)}
             </div>
             <div id="derived">
                 <h2>Derived Statistics</h2>
@@ -88,23 +106,6 @@ function Planner(){
         </div>
     )
 }
-/*
-
-Air: 0,
-        Earth: 0,
-        Fire: 0,
-        Water: 0,
-        Force: 0,
-        Mental: 0,
-        Meta: 0,
-        Morph: 0,
-        Nature: 0,
-        NecroBlack: 0,
-        NecroWhite: 0,
-        Phantasm: 0,
-        Summoning: 0,
-        Temporal: 0,
-*/
 
 function characterFactory(){
     return {
