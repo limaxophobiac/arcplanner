@@ -58,7 +58,7 @@ const backgrounds = [
         name: "Beat with an Ugly Stick",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "You are ugly. There is just no other word for it, unless you consider 'hideous' a better word. Children flee from you in terror and even the kindest of souls finds it difficult to stand your presence for long. As a result of your countenance, you take an extreme penalty to Beauty (-6), but because you have had to defend yourself from frequent attacks, you gain a bonus to Strength (+2), Dexterity (+2), and a slight bonus to all of your Combat Skills.",
-        modifiers: {BE: -6, ST: 2, DX: 2, Melee: 1, Dodge: 1, Bow: 1, Throwing: 1}
+        modifiers: {BT: -6, ST: 2, DX: 2, Melee: 1, Dodge: 1, Bow: 1, Throwing: 1}
     },
     {
         name: "Bookworm",
@@ -76,7 +76,7 @@ const backgrounds = [
         name: "Bride of Frankenstein",
         races: ["human", "halforc"],
         description: "You were reanimated by a mad scientist to be the bride of his other creation, but somehow you managed to escape before the wedding. You are very well constructed, gaining bonuses to Beauty (+4), Constitution (+4), Electrical Resistance (+20%), and Poison Resistance (+10%), but you have a very slow Dexterity (-4), a damaged brain-larynx connection (you use Dumb Dialogue options), and a susceptibility to fire, Fire Resistance (-10%). You also start out with no money whatsoever.",
-        modifiers: {BE: 4, CN: 4, DX: -4, ERes: 20, PRes: 10, FRes: -10}
+        modifiers: {BT: 4, CN: 4, DX: -4, ERes: 20, PRes: 10, FRes: -10}
     },
     {
         name: "Bully",
@@ -124,7 +124,7 @@ const backgrounds = [
         name: "Débutante",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "Your family is one of the most influential in all of Arcanum. As a young debutante, you have bonuses to Beauty (+3) and Charisma (+3). Of course, the easy life has made you soft in mind and body. You have penalties in Strength (-1), Dexterity (-1), and all of your Combat Skills.",
-        modifiers: {BE: 3, CH: 3, ST: -1, DX: -1, Melee: -2, Dodge: -2, Bow: -2, Throwing: -2}
+        modifiers: {BT: 3, CH: 3, ST: -1, DX: -1, Melee: -2, Dodge: -2, Bow: -2, Throwing: -2}
     },
     {
         name: "Disenfranchised Gnome",
@@ -220,13 +220,13 @@ const backgrounds = [
         name: "Lady's Man",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "Women swoon whenever they are near you. Being unusually good-looking, you gain a large bonus to Beauty (+6). Unfortunately, all that primping and powdering has you lacking in the more manly virtues... you lose points in Constitution (-2), Strength (-2), and Dexterity (-2).",
-        modifiers: {BE: 6, CN: -2, ST: -2, DX: -2}
+        modifiers: {BT: 6, CN: -2, ST: -2, DX: -2}
     },
     {
         name: "Mad Doctor",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "You have performed numerous untested and dangerous medical experiments upon yourself and suffer from the adverse effects. You have bonuses to Intelligence (+2), Perception (+2), Poison Resistances (+20%), Electrical Resistance (+20%), and a bonus to your Healing skill (+1), but you suffer penalties to Beauty (-1), Charisma (-1), Dexterity (-2), and Constitution (-3).",
-        modifiers: {IN: 2, PE: 2, PRes: 20, ERes: 20, BE: -1, CH: -1, DX: -2, CN: -3, Heal: 4}
+        modifiers: {IN: 2, PE: 2, PRes: 20, ERes: 20, BT: -1, CH: -1, DX: -2, CN: -3, Heal: 4}
     },
     {
         name: "Magick Allergy",
@@ -292,7 +292,7 @@ const backgrounds = [
         name: "Raised by Snake Handlers",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "You receive a 20% increase in your Resistances to poison, but suffer a penalty to your Beauty (-1) due to the large numbers of bite scars on your arms and legs.",
-        modifiers: {PRes: 20, BE: -1}
+        modifiers: {PRes: 20, BT: -1}
     },
     {
         name: "Raised in the Pits",
@@ -316,7 +316,7 @@ const backgrounds = [
         name: "Sent to Charm School",
         races: ["human"],
         description: "Instead of a general education, you were sent to charm school. You gain bonuses to both Beauty (+1) and Charisma (+2), but you lose points in both Intelligence (-1) and Strength (-2).",
-        modifiers: {BE: 1, CH: 2, IN: -1, ST: -2}
+        modifiers: {BT: 1, CH: 2, IN: -1, ST: -2}
     },
     {
         name: "Sheltered Childhood",
@@ -352,13 +352,13 @@ const backgrounds = [
         name: "Super Model",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "You are a stunningly gorgeous woman, and you have been pampered and coddled all of your life. You gain a tremendous bonus to Beauty (+6) at the cost of Strength (-2) and Intelligence (-4).",
-        modifiers: {BE: 6, ST: -2, IN: -4}
+        modifiers: {BT: 6, ST: -2, IN: -4}
     },
     {
         name: "Suppressed Orcish Looks",
         races: ["halforc"],
         description: "You do not really look very orcish, but you are exceptionally surly. You have a bonus to Beauty (+2), but suffer a penalty to your Charisma (-2).",
-        modifiers: {BE: 2, CH: -2}
+        modifiers: {BT: 2, CH: -2}
     },
     {
         name: "Technophobia",
@@ -376,13 +376,13 @@ const backgrounds = [
         name: "Tough Hide",
         races: ["halforc", "halfogre"],
         description: "You were born with thick, brutish skin. Although you resist damage more than the average bloke does (10%), you unfortunately take a penalty to Beauty (-1).",
-        modifiers: {ResistDamage: 10, BE: -1}
+        modifiers: {ResistDamage: 10, BT: -1}
     },
     {
         name: "Troll Offspring",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "The gods frowned upon you when you were born. Cursed with both trollish looks and mannerisms, you receive severe penalties to Beauty (-4) and Charisma (-4). As everyone seems to think that you are spawned from monsters or worse, you often find yourself fending off hunters and holy men, and gain bonuses to Strength (+2), Constitution (+2), and Dexterity (+1).",
-        modifiers: {BE: -4, CH: -4, ST: 2, CN: 2, DX: 1}
+        modifiers: {BT: -4, CH: -4, ST: 2, CN: 2, DX: 1}
     },
     {
         name: "Wild Half-Ogre",
