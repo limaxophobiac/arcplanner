@@ -21,7 +21,7 @@ function Planner(){
     }
     function calcMaxPrimary(primary){
         let racial = 20 + (primary == "ST" && !character.male ? -1 : 0) + (races[character.race][primary] || 0);
-        if (!character.male && primary == "CN" && base < 19) racial++;
+        if (!character.male && primary == "CN" && racial < 19) racial++;
         if ((backgrounds[character.background].modifiers[primary] || 0) + racial >= 20) return Math.max(20, racial);
         return racial + (backgrounds[character.background].modifiers[primary] || 0)
     }
@@ -46,71 +46,16 @@ function Planner(){
         return magickApt - techApt - character.Repair*5 - character.Firearms*5 -character.PickLocks*5 -character.DisarmTraps*5;
     }
 
-    const magics = [
-        "Conveyance",
-        "Divination",
-        "Air",
-        "Earth",
-        "Fire",
-        "Water",
-        "Force",
-        "Mental",
-        "Meta",
-        "Morph",
-        "Nature",
-        "NecroBlack",
-        "NecroWhite",
-        "Phantasm",
-        "Summoning",
-        "Temporal",
-    ]
-
-    const disciplines = [
-        "Chemistry",
-        "Electrical",
-        "Explosives",
-        "GunSmithing",
-        "Herbology",
-        "Mechanical",
-        "Smithy",
-        "Therapeutics"
-    ]
-
     return (
         <div id ="planner">
             <div id="primary">
                 <h2>Primary</h2>
-                <Statdisplay name="ST" value={calcPrimary("ST")} assigned={character.ST} hasPoints={character.unspent > 0} adder = {(val) => addStat("ST", val)} max = {calcMaxPrimary("ST")}/>
-                <Statdisplay name="CN" value={calcPrimary("CN")} assigned={character.CN} hasPoints={character.unspent > 0} adder = {(val) => addStat("CN", val)} max = {calcMaxPrimary("CN")}/>
-                <Statdisplay name="DX" value={calcPrimary("DX")} assigned={character.DX} hasPoints={character.unspent > 0} adder = {(val) => addStat("DX", val)} max = {calcMaxPrimary("DX")}/>
-                <Statdisplay name="BT" value={calcPrimary("BT")} assigned={character.BT} hasPoints={character.unspent > 0} adder = {(val) => addStat("BT", val)} max = {calcMaxPrimary("BT")}/>
-                <Statdisplay name="IN" value={calcPrimary("IN")} assigned={character.IN} hasPoints={character.unspent > 0} adder = {(val) => addStat("IN", val)} max = {calcMaxPrimary("IN")}/>
-                <Statdisplay name="WP" value={calcPrimary("WP")} assigned={character.WP} hasPoints={character.unspent > 0} adder = {(val) => addStat("WP", val)} max = {calcMaxPrimary("WP")}/>
-                <Statdisplay name="PE" value={calcPrimary("PE")} assigned={character.PE} hasPoints={character.unspent > 0} adder = {(val) => addStat("PE", val)} max = {calcMaxPrimary("PE")}/>
-                <Statdisplay name="CH" value={calcPrimary("CH")} assigned={character.CH} hasPoints={character.unspent > 0} adder = {(val) => addStat("CH", val)} max = {calcMaxPrimary("CH")}/>
+                {primaryStats.map(elem => <Statdisplay key = {elem} name={elem} value={calcPrimary(elem)} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {calcMaxPrimary(elem)}/>)}
+
             </div>
             <div id="Skills">
                 <h2>Skills</h2>
-                
-                <Statdisplay name="Bow" value={calcSkill("Bow")} assigned={character.Bow} hasPoints={character.unspent > 0} adder = {(val) => addStat("Bow", val)} max = {calcMaxSkill("DX", "Bow")}/>
-                <Statdisplay name="Dodge" value={calcSkill("Dodge")} assigned={character.Dodge} hasPoints={character.unspent > 0} adder = {(val) => addStat("Dodge", val)} max = {calcMaxSkill("DX", "Dodge")}/>
-                <Statdisplay name="Melee" value={calcSkill("Melee")} assigned={character.Melee} hasPoints={character.unspent > 0} adder = {(val) => addStat("Melee", val)} max = {calcMaxSkill("DX", "Melee")}/>
-                <Statdisplay name="Throwing" value={calcSkill("Throwing")} assigned={character.Throwing} hasPoints={character.unspent > 0} adder = {(val) => addStat("Throwing", val)} max = {calcMaxSkill("DX", "Throwing")}/>
-                
-                <Statdisplay name="Backstab" value={calcSkill("Backstab")} assigned={character.Backstab} hasPoints={character.unspent > 0} adder = {(val) => addStat("Backstab", val)} max = {calcMaxSkill("DX", "Backstab")}/>
-                <Statdisplay name="Pick Pocket" value={calcSkill("PickPocket")} assigned={character.PickPocket} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickPocket", val)} max = {calcMaxSkill("DX", "PickPocket")}/>
-                <Statdisplay name="Prowling" value={calcSkill("Prowling")} assigned={character.Prowling} hasPoints={character.unspent > 0} adder = {(val) => addStat("Prowling", val)} max = {calcMaxSkill("PE", "Prowling")}/>
-                <Statdisplay name="Spot Trap" value={calcSkill("SpotTrap")} assigned={character.SpotTrap} hasPoints={character.unspent > 0} adder = {(val) => addStat("SpotTrap", val)} max = {calcMaxSkill("PE", "SpotTrap")}/>
-
-                <Statdisplay name="Gambling" value={calcSkill("Gambling")} assigned={character.Gambling} hasPoints={character.unspent > 0} adder = {(val) => addStat("Gambling", val)} max = {calcMaxSkill("IN", "Gambling")}/>
-                <Statdisplay name="Haggle" value={calcSkill("Haggle")} assigned={character.Haggle} hasPoints={character.unspent > 0} adder = {(val) => addStat("Haggle", val)} max = {calcMaxSkill("WP", "Haggle")}/>
-                <Statdisplay name="Heal" value={calcSkill("Heal")} assigned={character.Heal} hasPoints={character.unspent > 0} adder = {(val) => addStat("Heal", val)} max = {calcMaxSkill("IN", "Heal")}/>
-                <Statdisplay name="Persuasion" value={calcSkill("Persuasion")} assigned={character.Persuasion} hasPoints={character.unspent > 0} adder = {(val) => addStat("Persuasion", val)} max = {calcMaxSkill("CH", "Persuasion")}/>
-
-                <Statdisplay name="Repair" value={calcSkill("Repair")} assigned={character.Repair} hasPoints={character.unspent > 0} adder = {(val) => addStat("Repair", val)} max = {calcMaxSkill("IN", "Repair")}/>
-                <Statdisplay name="Firearms" value={calcSkill("Firearms")} assigned={character.Firearms} hasPoints={character.unspent > 0} adder = {(val) => addStat("Firearms", val)} max = {calcMaxSkill("PE", "Firearms")}/>
-                <Statdisplay name="PickLocks" value={calcSkill("PickLocks")} assigned={character.PickLocks} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickLocks", val)} max = {calcMaxSkill("DX", "PickLocks")}/>
-                <Statdisplay name="Disarm Traps" value={calcSkill("DisarmTraps")} assigned={character.DisarmTraps} hasPoints={character.unspent > 0} adder = {(val) => addStat("DisarmTraps", val)} max = {calcMaxSkill("PE", "DisarmTraps")}/>
+                {skills.map(elem => <Statdisplay key = {elem.skill} name={elem.skill} value={calcSkill(elem.skill)} assigned={character[elem.skill]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem.skill, val)} max = {calcMaxSkill(elem.primary, elem.skill)}/>)}
                 <h5>Note: Skills over 20 and below 0 act as 20 or 0</h5>
             </div>
             
@@ -132,6 +77,57 @@ function Planner(){
         </div>
     )
 }
+
+const primaryStats = ["ST", "CN", "DX", "BT", "IN", "WP", "PE", "CH"];
+
+const magics = [
+    "Conveyance",
+    "Divination",
+    "Air",
+    "Earth",
+    "Fire",
+    "Water",
+    "Force",
+    "Mental",
+    "Meta",
+    "Morph",
+    "Nature",
+    "NecroBlack",
+    "NecroWhite",
+    "Phantasm",
+    "Summoning",
+    "Temporal",
+]
+
+const disciplines = [
+    "Chemistry",
+    "Electrical",
+    "Explosives",
+    "GunSmithing",
+    "Herbology",
+    "Mechanical",
+    "Smithy",
+    "Therapeutics"
+]
+
+const skills = [
+    {skill: "Bow", primary: "DX"},
+    {skill: "Dodge", primary: "DX"},
+    {skill: "Melee", primary: "DX"},
+    {skill: "Throwing", primary: "DX"},
+    {skill: "Backstab", primary: "DX"},
+    {skill: "PickPocket", primary: "DX"},
+    {skill: "Prowling", primary: "PE"},
+    {skill: "SpotTrap", primary: "PE"},
+    {skill: "Gambling", primary: "IN"},
+    {skill: "Haggle", primary: "WP"},
+    {skill: "Heal", primary: "IN"},
+    {skill: "Persuasion", primary: "CH"},
+    {skill: "Repair", primary: "IN"},
+    {skill: "Firearms", primary: "PE"},
+    {skill: "PickLocks", primary: "DX"},
+    {skill: "DisarmTraps", primary: "PE"},
+]
 
 function characterFactory(){
     return {
