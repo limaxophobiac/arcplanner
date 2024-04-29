@@ -25,10 +25,10 @@
     border-radius: 0.5rem;
     padding: 0.1rem;
     margin-right: 0.2rem;
+    margin-left: 0.2rem;
 }
 
 .statDisplay .nameDiv{
-    margin-left: 0.2rem;
     padding: 0.1rem;
     min-width: 3rem;
     flex-grow: 1;

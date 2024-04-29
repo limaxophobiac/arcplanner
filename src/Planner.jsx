@@ -11,6 +11,7 @@ export default Planner;
 function Planner(){
     const [character, setCharacter] = useState(characterFactory());
     const [igMins, setIgMins] = useState(false);
+//    const [levelCap, setLevelCap] = useState(true);
 
     function addStat(id, val){
         setCharacter({...character, [id]: character[id] + val, unspent: character.unspent - val})
@@ -46,6 +47,12 @@ function Planner(){
         return magickApt - techApt - character.Repair*5 - character.Firearms*5 -character.PickLocks*5 -character.DisarmTraps*5;
     }
 
+    function calcReaction(){
+        let beauty = calcPrimary("BT");
+        if (beauty >= 20) return 100 + (beauty-20)*10;
+        return [-65, -52, -42, -33, -25, -18, -12, -7, -3, 0, 3, 7, 12, 18, 25, 33, 42, 52, 65][beauty-1];
+    }
+
     return (
         <div id ="planner">
             <div id="primary">
@@ -73,6 +80,10 @@ function Planner(){
                 <Statdisplay name="FP" value={character.level*3 + calcPrimary("CN")*2 + calcPrimary("WP") + character.Fp*4} assigned={character.Fp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Fp", val)} max = {10000}/>
                 <Passivedisplay name = {"Magick Affinity"} value = {Math.max(calcAffinity(), 0)}/>
                 <Passivedisplay name = {"Tech Affinity"} value = {Math.max(-calcAffinity(), 0)}/>
+                <Passivedisplay name = {"Damage Adjustment"} value = {calcPrimary("ST") >= 20 ? (calcPrimary("ST") - 10)*2 : calcPrimary("ST") >= 10 ? calcPrimary("ST") -10 : calcPrimary("ST") -9}/>
+                <Passivedisplay name = {"Speed"} value = {(backgrounds[character.background].modifiers.Speed || 0) + (calcPrimary("DX") >= 20 ? calcPrimary("DX")+5 : calcPrimary("DX"))}/>
+                <Passivedisplay name = {"Heal Rate"} value = {Math.min(Math.round(calcPrimary("CN")/3), 6)}/>
+                <Passivedisplay name = {"Reaction Modifier"} value = {calcReaction()}/>        
             </div>
         </div>
     )
@@ -132,10 +143,10 @@ const skills = [
 function characterFactory(){
     return {
         male: true,
-        race: "halfelf",
+        race: "halfling",
         background: 9,
         level: 1,
-        unspent: 5,
+        unspent: 30,
         ST: 0, 
         CN: 0,
         DX: 0,
