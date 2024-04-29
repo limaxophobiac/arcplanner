@@ -9,6 +9,7 @@ export default Planner;
 
 function Planner(){
     const [character, setCharacter] = useState(characterFactory());
+ //   const [igMins, setIgMins] = useState(false);
 
     function addStat(id, val){
         setCharacter({...character, [id]: character[id] + val, unspent: character.unspent - val})
@@ -20,17 +21,7 @@ function Planner(){
     function calcSkill(name){
         return (races[character.race][name] || 0) + (backgrounds[character.background].modifiers[name] || 0) + (character[name]*4);
     }
-
-    /*
-        Gambling: 0,
-        Haggle: 0,
-        Heal: 0,
-        Persuasion: 0,
-        Repair: 0,
-        Firearms: 0,
-        PickLocks: 0,
-        DisarmTraps: 0,
-    */
+    
     return (
         <div id ="planner">
             <div id="primary">
@@ -55,6 +46,16 @@ function Planner(){
                 <Statdisplay name="Pick Pocket" value={calcSkill("PickPocket")} assigned={character.PickPocket} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickPocket", val)}/>
                 <Statdisplay name="Prowling" value={calcSkill("Prowling")} assigned={character.Prowling} hasPoints={character.unspent > 0} adder = {(val) => addStat("Prowling", val)}/>
                 <Statdisplay name="Spot Trap" value={calcSkill("SpotTrap")} assigned={character.SpotTrap} hasPoints={character.unspent > 0} adder = {(val) => addStat("SpotTrap", val)}/>
+
+                <Statdisplay name="Gambling" value={calcSkill("Gambling")} assigned={character.Gambling} hasPoints={character.unspent > 0} adder = {(val) => addStat("Gambling", val)}/>
+                <Statdisplay name="Haggle" value={calcSkill("Haggle")} assigned={character.Haggle} hasPoints={character.unspent > 0} adder = {(val) => addStat("Haggle", val)}/>
+                <Statdisplay name="Heal" value={calcSkill("Heal")} assigned={character.Heal} hasPoints={character.unspent > 0} adder = {(val) => addStat("Heal", val)}/>
+                <Statdisplay name="Persuasion" value={calcSkill("Persuasion")} assigned={character.Persuasion} hasPoints={character.unspent > 0} adder = {(val) => addStat("Persuasion", val)}/>
+
+                <Statdisplay name="Repair" value={calcSkill("Repair")} assigned={character.Repair} hasPoints={character.unspent > 0} adder = {(val) => addStat("Repair", val)}/>
+                <Statdisplay name="Firearms" value={calcSkill("Firearms")} assigned={character.Firearms} hasPoints={character.unspent > 0} adder = {(val) => addStat("Firearms", val)}/>
+                <Statdisplay name="PickLocks" value={calcSkill("PickLocks")} assigned={character.PickLocks} hasPoints={character.unspent > 0} adder = {(val) => addStat("PickLocks", val)}/>
+                <Statdisplay name="Disarm Traps" value={calcSkill("DisarmTraps")} assigned={character.DisarmTraps} hasPoints={character.unspent > 0} adder = {(val) => addStat("DisarmTraps", val)}/>
             </div>
             <div id="Magic">
                 <h2>Magic</h2>
