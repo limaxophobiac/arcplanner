@@ -57,11 +57,14 @@ function Planner(){
         
         <div id ="planner">
             <div id="levelRaceSelect">
-            <Statdisplay name="Race" value={races[character.race].name} assigned={character.race} hasPoints={true} adder = {(val) => {
+            <Statdisplay name="Race" value={races[character.race].name} assigned={character.race} valueWidth={7} hasPoints={true} adder = {(val) => {
                 if ((character.race + val + races.length) % races.length < 4) 
                     setCharacter({...character, race: (character.race + val + races.length) % races.length});
                 else setCharacter({...character, race: (character.race + val + races.length) % races.length, male: true});
             }} max = {races.length} min={-1}/>
+            <Statdisplay disable={character.race >= 4} name="Gender" value = {character.male ? "Male" : "Female"} valueWidth={7} addigned={1} hasPoints={true} adder= {() => {
+                setCharacter({...character, male: !character.male});
+            }}/>
 
             </div>
             <div id="primary">
@@ -151,9 +154,9 @@ const skills = [
 
 function characterFactory(){
     return {
-        male: false,
+        male: true,
         race: 0,
-        background: 9,
+        background: 0,
         level: 1,
         unspent: 30,
         ST: 0, 
