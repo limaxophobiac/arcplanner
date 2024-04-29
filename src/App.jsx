@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Planner from './Planner.jsx'
+//import Planner from './Planner.jsx'
 import './App.css'
 import Statdisplay from './statdisplay.jsx'
 import Passivedisplay from './passivedisplay.jsx'
@@ -25,4 +25,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
