@@ -29,7 +29,7 @@ function Planner(){
         return (races[character.race][name] || 0) + (backgrounds[character.background].modifiers[name] || 0) + (character[name]*4);
     }
     function calcMaxSkill(primary, skill){
-        if (igMins) return 20;
+        if (igMins) return 20 + (races[character.race][skill] || 0) + (backgrounds[character.background].modifiers[skill] || 0);
         return Math.min(20, (Math.floor(calcPrimary(primary)/3) -1)*4) + (races[character.race][skill] || 0) + (backgrounds[character.background].modifiers[skill] || 0);
     }
 
@@ -127,10 +127,10 @@ function Planner(){
 function characterFactory(){
     return {
         male: true,
-        race: "halforc",
+        race: "halfelf",
         background: 9,
         level: 1,
-        unspent: 30,
+        unspent: 5,
         ST: 0, 
         CN: 0,
         DX: 0,
