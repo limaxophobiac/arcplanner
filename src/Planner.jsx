@@ -14,7 +14,7 @@ function Planner(){
         setCharacter({...character, [id]: character[id] + val, unspent: character.unspent - val})
     }
     return (
-        <>
+        <div id ="planner">
             <div id="primary">
                 <h2>Primary Statistics</h2>
                 <Statdisplay name="ST" value={8 - !character.male + character.ST} assigned={character.ST} hasPoints={character.unspent > 0} adder = {(val) => addStat("ST", val)}/>
@@ -38,7 +38,7 @@ function Planner(){
             <div id="derived">
                 <h2>Derived Statistics</h2>
             </div>
-        </>
+        </div>
     )
 }
 
@@ -49,7 +49,7 @@ function characterFactory(){
         race: "human",
         background: 0,
         level: 1,
-        unspent: 10,
+        unspent: 30,
         ST: 0, 
         CN: 0,
         DX: 0,
