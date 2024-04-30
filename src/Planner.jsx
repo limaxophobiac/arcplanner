@@ -76,7 +76,7 @@ function Planner(){
 
             </div>
             <div id="backGroundSelect">
-                
+
             </div>
             <div id="primary">
                 <h2>Primary</h2>
@@ -100,8 +100,8 @@ function Planner(){
 
             <div id="derived">
                 <h2>Derived Statistics</h2>
-                <Statdisplay name="HP" value={character.level*3 + calcPrimary("ST")*2 + calcPrimary("WP") + character.Hp*4} assigned={character.Hp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Hp", val)} max = {10000}/>
-                <Statdisplay name="FP" value={character.level*3 + calcPrimary("CN")*2 + calcPrimary("WP") + character.Fp*4} assigned={character.Fp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Fp", val)} max = {10000}/>
+                <Statdisplay name="HP" value={4 +character.level*2 + calcPrimary("ST")*2 + calcPrimary("WP") + character.Hp*4} assigned={character.Hp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Hp", val)} max = {10000}/>
+                <Statdisplay name="FP" value={4 +character.level*2 + calcPrimary("CN")*2 + calcPrimary("WP") + character.Fp*4} assigned={character.Fp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Fp", val)} max = {10000}/>
                 <Passivedisplay name = {"Magick Affinity"} value = {Math.max(calcAffinity(), 0)}/>
                 <Passivedisplay name = {"Tech Affinity"} value = {Math.max(-calcAffinity(), 0)}/>
                 <Passivedisplay name = {"Damage Adjustment"} value = {calcPrimary("ST") >= 20 ? (calcPrimary("ST") - 10)*2 : calcPrimary("ST") >= 10 ? calcPrimary("ST") -10 : calcPrimary("ST") -9}/>
