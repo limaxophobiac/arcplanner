@@ -1,5 +1,4 @@
 #planner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr;
 }

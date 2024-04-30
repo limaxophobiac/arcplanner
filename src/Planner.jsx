@@ -81,7 +81,7 @@ function Planner(){
                 <Statdisplay name="Background" valueWidth={15} value={backgrounds[character.background].name}assigned={1} adder={(val) => {
                     setCharacter({...character, background: (character.background + val + backgrounds.length)%backgrounds.length});
                 }}/>
-                <p style={{width: "30rem", textAlign: "justify", marginTop: "0.5rem"}}>{backgrounds[character.background].races.includes(races[character.race].name.toLowerCase()) ? backgrounds[character.background].description : "Background not available for " + races[character.race].name}</p>
+                <p style={{minWidth: "30rem", textAlign: "justify", marginTop: "0.5rem"}}>{backgrounds[character.background].races.includes(races[character.race].name.toLowerCase()) ? backgrounds[character.background].description : "Background not available for " + races[character.race].name}</p>
             </div>
             <div id="primary">
                 <h2>Primary</h2>
