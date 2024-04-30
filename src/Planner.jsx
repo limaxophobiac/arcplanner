@@ -11,7 +11,7 @@ export default Planner;
 function Planner(){
     const [character, setCharacter] = useState(characterFactory());
     const [igMins, setIgMins] = useState(false);
-//    const [levelCap, setLevelCap] = useState(true);
+    const [levelCap, setLevelCap] = useState(true);
 
     function addStat(id, val){
         setCharacter({...character, [id]: character[id] + val, unspent: character.unspent - val})
@@ -53,6 +53,10 @@ function Planner(){
         return [-65, -52, -42, -33, -25, -18, -12, -7, -3, 0, 3, 7, 12, 18, 25, 33, 42, 52, 65][beauty-1];
     }
 
+    function calcPoints(level){
+        return level + 4 + Math.floor(level/5);
+    }
+
     return (
         
         <div id ="planner">
@@ -62,9 +66,13 @@ function Planner(){
                     setCharacter({...character, race: (character.race + val + races.length) % races.length});
                 else setCharacter({...character, race: (character.race + val + races.length) % races.length, male: true});
             }} max = {races.length} min={-1}/>
-            <Statdisplay disable={character.race >= 4} name="Gender" value = {character.male ? "Male" : "Female"} valueWidth={7} addigned={1} hasPoints={true} adder= {() => {
+            <Statdisplay disable={character.race >= 4} name="Gender" value = {character.male ? "Male" : "Female"} valueWidth={7} assigned={1} hasPoints={true} adder= {() => {
                 setCharacter({...character, male: !character.male});
             }}/>
+            <Statdisplay name="Level" value={character.level} assigned={character.level} hasPoints={true} valueWidth={7} min={1} adder={(val) => {
+                setCharacter({...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)})
+            }} max = {levelCap ? 50 : 500}/>
+            <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
             <div id="primary">
@@ -158,7 +166,7 @@ function characterFactory(){
         race: 0,
         background: 0,
         level: 1,
-        unspent: 30,
+        unspent: 5,
         ST: 0, 
         CN: 0,
         DX: 0,
