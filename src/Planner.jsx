@@ -32,7 +32,7 @@ function Planner(){
     }
     function calcMaxSkill(primary, skill){
         if (igMins) return 20 + (races[character.race][skill] || 0) + (backgrounds[character.background].modifiers[skill] || 0);
-        return Math.min(20, (Math.floor(calcPrimary(primary)/3) -1)*4) + (races[character.race][skill] || 0) + (backgrounds[character.background].modifiers[skill] || 0);
+        return Math.max(0, Math.min(20, (Math.floor(calcPrimary(primary)/3) -1)*4) + (races[character.race][skill] || 0) + (backgrounds[character.background].modifiers[skill] || 0));
     }
 
     function calcDiscpMax(){
@@ -75,8 +75,11 @@ function Planner(){
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
-            <div id="backGroundSelect">
-
+            <div id="backGroundSelect" style={{minWidth: "30rem"}}>
+                <Statdisplay name="Background" valueWidth={15} value={backgrounds[character.background].name}assigned={1} adder={(val) => {
+                    setCharacter({...character, background: (character.background + val + backgrounds.length)%backgrounds.length});
+                }}/>
+                <p style={{width: "30rem", textAlign: "justify"}}>{backgrounds[character.background].description}</p>
             </div>
             <div id="primary">
                 <h2>Primary</h2>
