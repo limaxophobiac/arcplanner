@@ -75,10 +75,17 @@ function Planner(){
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
+            <div id="backGroundSelect">
+                
+            </div>
             <div id="primary">
                 <h2>Primary</h2>
                 {primaryStats.map(elem => <Statdisplay key = {elem} name={elem} value={calcPrimary(elem)} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {calcMaxPrimary(elem)}/>)}
 
+            </div>
+            <div id="Disciplines">
+                <h2>Disciplines</h2>
+                {disciplines.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {calcDiscpMax()}/>)}
             </div>
             <div id="Skills">
                 <h2>Skills</h2>
@@ -90,10 +97,7 @@ function Planner(){
                 <h2>Magic</h2>
                 {magics.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {Math.floor(calcPrimary("WP")/3) -1}/>)}
             </div>
-            <div id="Disciplines">
-                <h2>Disciplines</h2>
-                {disciplines.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {calcDiscpMax()}/>)}
-            </div>
+
             <div id="derived">
                 <h2>Derived Statistics</h2>
                 <Statdisplay name="HP" value={character.level*3 + calcPrimary("ST")*2 + calcPrimary("WP") + character.Hp*4} assigned={character.Hp} hasPoints={character.unspent > 0} adder = {(val) => addStat("Hp", val)} max = {10000}/>
