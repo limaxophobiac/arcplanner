@@ -1,3 +1,5 @@
+//arcanum character planner by limaxophobiac
+
 import { useState } from 'react'
 import backgrounds from './backgrounds.js'
 import races from './races.js'
