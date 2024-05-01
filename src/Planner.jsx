@@ -76,11 +76,11 @@ function Planner(){
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
-            <div id="backGroundSelect" style={{minWidth: "30rem"}}>
+            <div id="backGroundSelect" style={{minWidth: "28rem"}}>
                 <Statdisplay name="Background" valueWidth={15} value={backgrounds[character.background].name}assigned={1} adder={(val) => {
                     setCharacter(character => {return {...character, background: (character.background + val + backgrounds.length)%backgrounds.length}});
                 }}/>
-                <p style={{minWidth: "30rem", textAlign: "justify", marginTop: "0.5rem"}}>{backgrounds[character.background].races.includes(races[character.race].name.toLowerCase()) ? backgrounds[character.background].description : "Background not available for " + races[character.race].name}</p>
+                <p style={{minWidth: "28rem", textAlign: "justify", marginTop: "0.5rem"}}>{backgrounds[character.background].races.includes(races[character.race].name.toLowerCase()) ? backgrounds[character.background].description : "Background not available for " + races[character.race].name}</p>
             </div>
             <div id="primary">
                 <h2>Primary</h2>

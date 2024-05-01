@@ -18,13 +18,13 @@ const backgrounds = [
         modifiers: {IN: 2}
     },
     {
-        name: "Apprenticed to a Blacksmith",
+        name: "Appr. to a Blacksmith",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "Your master is a hard man. You gain a bonus to Strength (+1) and a bonus to your Repair skill, but you suffer a penalty to Dexterity (-2) due to the strenuous and repetitive hard labor.",
         modifiers: {ST: 1, DX: -2, Repair: 2}
     },
     {
-        name: "Apprenticed to a Shopkeeper",
+        name: "Appr. to a Shopkeeper",
         races: ["human", "elf", "dwarf", "gnome", "halfling", "halfelf", "halforc", "halfogre"],
         description: "Spending your whole childhood inside a shop, you gain an exceptional bonus to Haggle, but you suffer a penalty to Dexterity (-1).",
         modifiers: {DX: -1, Haggle: 3}
