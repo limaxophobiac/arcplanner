@@ -74,7 +74,9 @@ function Planner(){
                 setCharacter(character => { return {...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)}})
             }} max = {levelCap ? 50 : 500}  holdSpeed={75}/>
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
-            <button onClick={() => setLevelCap(!levelCap)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", padding: "0.25rem", fontSize: "1rem"}}>Level Cap: {levelCap ? " ON" : "OFF"}</button>
+            <button onClick={() => setLevelCap(!levelCap)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", width: "7rem", padding: "0.25rem", fontSize: "0.9rem"}}>Level Cap: {levelCap ? " ON" : "OFF"}</button>
+            <button onClick={() => setIgMins(!igMins)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", width: "7rem", padding: "0.25rem", fontSize: "0.75rem"}}>Skill Reqs: {!igMins ? " ON" : "OFF"}</button>
+
 
             </div>
             <div id="backGroundSelect" style={{minWidth: "28rem"}}>
@@ -100,7 +102,7 @@ function Planner(){
             
             <div id="Magic">
                 <h2>Magic</h2>
-                {magics.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {Math.floor(calcPrimary("WP")/3) -1}/>)}
+                {magics.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {igMins ? 5 : Math.min(Math.floor(calcPrimary("WP")/3) -1, 5)}/>)}
             </div>
 
             <div id="derived">
