@@ -16,7 +16,8 @@ function Planner(){
     const [levelCap, setLevelCap] = useState(true);
 
     function addStat(id, val){
-        setCharacter({...character, [id]: character[id] + val, unspent: character.unspent - val})
+        console.log(character[id]);
+        setCharacter(character => {return {...character, [id]: character[id] + val, unspent: character.unspent - val}})
     }
     function calcPrimary(primary){
         const base = 8 + (primary == "ST" && !character.male ? -1 : 0) + (primary == "CN" && !character.male ? 1 : 0);
@@ -72,8 +73,8 @@ function Planner(){
                 setCharacter({...character, male: !character.male});
             }}/>
             <Statdisplay name="Level" value={character.level} assigned={character.level} hasPoints={true} valueWidth={7} min={1} adder={(val) => {
-                setCharacter({...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)})
-            }} max = {levelCap ? 50 : 500}/>
+                setCharacter(character => { return {...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)}})
+            }} max = {levelCap ? 50 : 500}  holdSpeed={100}/>
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
