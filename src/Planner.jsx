@@ -65,22 +65,20 @@ function Planner(){
         <div id ="planner">
             <div id="levelRaceSelect">
             <Statdisplay name="Race" value={races[character.race].name} assigned={character.race} valueWidth={7} hasPoints={true} adder = {(val) => {
-                if ((character.race + val + races.length) % races.length < 4) 
-                    setCharacter({...character, race: (character.race + val + races.length) % races.length});
-                else setCharacter({...character, race: (character.race + val + races.length) % races.length, male: true});
+               setCharacter(character => {return {...character, race: (character.race + val + races.length) % races.length, male: ((character.race + val + races.length) % races.length < 4) ? character.male : true}});
             }} max = {races.length} min={-1}/>
             <Statdisplay disable={character.race >= 4} name="Gender" value = {character.male ? "Male" : "Female"} valueWidth={7} assigned={1} hasPoints={true} adder= {() => {
                 setCharacter({...character, male: !character.male});
             }}/>
             <Statdisplay name="Level" value={character.level} assigned={character.level} hasPoints={true} valueWidth={7} min={1} adder={(val) => {
                 setCharacter(character => { return {...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)}})
-            }} max = {levelCap ? 50 : 500}  holdSpeed={100}/>
+            }} max = {levelCap ? 50 : 500}  holdSpeed={75}/>
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
 
             </div>
             <div id="backGroundSelect" style={{minWidth: "30rem"}}>
                 <Statdisplay name="Background" valueWidth={15} value={backgrounds[character.background].name}assigned={1} adder={(val) => {
-                    setCharacter({...character, background: (character.background + val + backgrounds.length)%backgrounds.length});
+                    setCharacter(character => {return {...character, background: (character.background + val + backgrounds.length)%backgrounds.length}});
                 }}/>
                 <p style={{minWidth: "30rem", textAlign: "justify", marginTop: "0.5rem"}}>{backgrounds[character.background].races.includes(races[character.race].name.toLowerCase()) ? backgrounds[character.background].description : "Background not available for " + races[character.race].name}</p>
             </div>
