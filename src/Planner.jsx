@@ -74,6 +74,7 @@ function Planner(){
                 setCharacter(character => { return {...character, level: character.level + val, unspent: character.unspent + calcPoints(character.level + val) - calcPoints(character.level)}})
             }} max = {levelCap ? 50 : 500}  holdSpeed={75}/>
             <Passivedisplay name = {"Character Points"} value = {character.unspent} valueWidth={7}/> 
+            <button onClick={() => setLevelCap(!levelCap)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", padding: "0.25rem", fontSize: "1rem"}}>Level Cap: {levelCap ? " ON" : "OFF"}</button>
 
             </div>
             <div id="backGroundSelect" style={{minWidth: "28rem"}}>
