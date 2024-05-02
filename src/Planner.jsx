@@ -16,7 +16,6 @@ function Planner(){
     const [levelCap, setLevelCap] = useState(true);
 
     function addStat(id, val){
-        console.log(character[id]);
         setCharacter(character => {return {...character, [id]: character[id] + val, unspent: character.unspent - val}})
     }
     function calcPrimary(primary){
@@ -25,7 +24,7 @@ function Planner(){
     }
     function calcMaxPrimary(primary){
         let racial = 20 + (primary == "ST" && !character.male ? -1 : 0) + (races[character.race][primary] || 0);
-        if (!character.male && primary == "CN" && racial < 19) racial++;
+        if (!character.male && primary == "CN" && racial <= 19) racial++;
         if ((backgrounds[character.background].modifiers[primary] || 0) + racial >= 20) return Math.max(20, racial);
         return racial + (backgrounds[character.background].modifiers[primary] || 0)
     }
@@ -69,10 +68,16 @@ function Planner(){
         return charCode;
     }
 
-    function readCharcode(code){
+    function readCharcode(charCode){
         let loadChar = {};
-        loadChar.male = code[0] == "M";
+        loadChar.male = charCode[0] == "M";
         setCharacter(loadChar);
+        const arr = charCode.split("I");
+
+        for (let i = 1; i < arr.length; i++)
+            loadChar[values[i-1]] = parseInt(arr[i]);
+        setCharacter(loadChar);
+        
     }
 
     return (
@@ -92,8 +97,7 @@ function Planner(){
             <button onClick={() => setLevelCap(!levelCap)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", width: "7rem", padding: "0.25rem", fontSize: "0.9rem"}}>Level Cap: {levelCap ? " ON" : "OFF"}</button>
             <button onClick={() => setIgMins(!igMins)}  style={{float: "right", height: "2rem", border: "none", backgroundColor: "lightgray", margin: "0.05rem 0.2rem", borderRadius: "0.5rem", width: "7rem", padding: "0.25rem", fontSize: "0.75rem"}}>Skill Reqs: {!igMins ? " ON" : "OFF"}</button>
 
-
-            </div>
+           </div>
             <div id="backGroundSelect" style={{minWidth: "28rem"}}>
                 <Statdisplay name="Background" valueWidth={15} value={backgrounds[character.background].name}assigned={1} adder={(val) => {
                     setCharacter(character => {return {...character, background: (character.background + val + backgrounds.length)%backgrounds.length}});
