@@ -60,6 +60,21 @@ function Planner(){
         return level + 4 + Math.floor(level/5);
     }
 
+    function generateCharcode(){
+        let charCode = character.male ? "M" : "F";
+
+        for (let elem of values)
+            charCode += "I" + character[elem];
+
+        return charCode;
+    }
+
+    function readCharcode(code){
+        let loadChar = {};
+        loadChar.male = code[0] == "M";
+        setCharacter(loadChar);
+    }
+
     return (
         
         <div id ="planner">
@@ -170,6 +185,63 @@ const skills = [
     {skill: "PickLocks", primary: "DX"},
     {skill: "DisarmTraps", primary: "PE"},
 ]
+
+const values = [
+    "race",
+    "background",
+    "level",
+    "unspent",
+    "ST", 
+    "CN",
+    "DX",
+    "BT",
+    "IN",
+    "WP",
+    "PE",
+    "CH",
+    "Hp",
+    "Fp",
+    "Conveyance",
+    "Divination",
+    "Air",
+    "Earth",
+    "Fire",
+    "Water",
+    "Force",
+    "Mental",
+    "Meta",
+    "Morph",
+    "Nature",
+    "NecroBlack",
+    "NecroWhite",
+    "Phantasm",
+    "Summoning",
+    "Temporal",
+    "Bow",
+    "Dodge",
+    "Melee",
+    "Throwing",
+    "Backstab",
+    "PickPocket",
+    "Prowling",
+    "SpotTrap",
+    "Gambling",
+    "Haggle",
+    "Heal",
+    "Persuasion",
+    "Repair",
+    "Firearms",
+    "PickLocks",
+    "DisarmTraps",
+    "Chemistry",
+    "Electrical",
+    "Explosives",
+    "GunSmithing",
+    "Herbology",
+    "Mechanical",
+    "Smithy",
+    "Therapeutics"
+];
 
 function characterFactory(){
     return {
