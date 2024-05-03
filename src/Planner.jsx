@@ -125,7 +125,7 @@ function Planner(){
 
             <div id="Blessings">
                 <h2>Blessings</h2>
-                {blessings.map(elem => (<Fragment key={elem.name}><label style={{fontSize: "1.25rem"}}>  <input id={elem.name} type="checkbox" /> {elem.name} </label><br/> </Fragment>))}
+                {blessings.map(elem => (<Fragment key={elem.name}><label style={{fontSize: "1.25rem"}}>  <input id={elem.name} type="checkbox" defaultChecked={character[elem.name]} onChange={() => setCharacter(character => {return {...character, blessings: {...(character.blessings), [elem.name]: 1 - character.blessings[elem.name]} }}) }/> {elem.name} </label><br/> </Fragment>))}
             </div>
 
             <div id="derived">
@@ -248,7 +248,14 @@ const values = [
     "Herbology",
     "Mechanical",
     "Smithy",
-    "Therapeutics"
+    "Therapeutics",
+    "Arbalah",
+    "Madame Toussaude",
+    "Brigitte",
+    "Halcyon",
+    "Moorindal",
+    "Kai'tan",
+    "Velorien"
 ];
 
 function characterFactory(){
@@ -307,7 +314,16 @@ function characterFactory(){
         Herbology: 0,
         Mechanical: 0,
         Smithy: 0,
-        Therapeutics: 0
+        Therapeutics: 0,
+        blessings: {
+            Arbalah: 0,
+            "Madame Toussaude": 0,
+            Brigitte: 0,
+            Halcyon: 0,
+            Moorindal: 0,
+            "Kai'tan": 0,
+            Velorien: 0
+        }
     };
 }
 
