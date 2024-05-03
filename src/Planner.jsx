@@ -1,9 +1,9 @@
 //arcanum character planner by limaxophobiac
-
+import {Fragment} from 'react'
 import { useState } from 'react'
 import backgrounds from './backgrounds.js'
 import races from './races.js'
-//import blessings from './blessings.js'
+import blessings from './blessings.js'
 import Statdisplay from './statdisplay.jsx'
 import Passivedisplay from './passivedisplay.jsx'
 import './Planner.css'
@@ -77,7 +77,6 @@ function Planner(){
         for (let i = 1; i < arr.length; i++)
             loadChar[values[i-1]] = parseInt(arr[i]);
         setCharacter(loadChar);
-        
     }
 
     return (
@@ -122,6 +121,11 @@ function Planner(){
             <div id="Magic">
                 <h2>Magic</h2>
                 {magics.map(elem => <Statdisplay key ={elem} name={elem} value={character[elem]} assigned={character[elem]} hasPoints={character.unspent > 0} adder = {(val) => addStat(elem, val)} max = {igMins ? 5 : Math.min(Math.floor(calcPrimary("WP")/3) -1, 5)}/>)}
+            </div>
+
+            <div id="Blessings">
+                <h2>Blessings</h2>
+                {blessings.map(elem => (<Fragment key={elem.name}><label style={{fontSize: "1.25rem"}}>  <input id={elem.name} type="checkbox" /> {elem.name} </label><br/> </Fragment>))}
             </div>
 
             <div id="derived">
